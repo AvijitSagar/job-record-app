@@ -20,7 +20,7 @@ class JobRecordController extends Controller
      */
     public function create()
     {
-        //
+        return view('job-record.record.add');
     }
 
     /**
