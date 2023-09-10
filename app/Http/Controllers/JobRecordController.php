@@ -45,24 +45,28 @@ class JobRecordController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(JobRecord $jobRecord)
+    public function edit(string $jobRecord)
     {
-        //
+        return view('job-record.record.edit', [
+            'record' => JobRecord::find($jobRecord)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JobRecord $jobRecord)
+    public function update(Request $request, string $jobRecord)
     {
-        //
+        JobRecord::updateJobRecord($request, $jobRecord);
+        return redirect(route('list.record.job'))->with('message', 'Record updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JobRecord $jobRecord)
+    public function destroy(string $jobRecord)
     {
-        //
+        JobRecord::deleteJobRecord($jobRecord);
+        return back()->with('message', 'Record deleted successfully');
     }
 }

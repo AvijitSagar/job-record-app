@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/jobrecord', [JobRecordController::class, 'store'])->name('record.job');
     Route::get('/record-list', [JobRecordController::class, 'index'])->name('list.record.job');
+    Route::get('/edit-record/{id}', [JobRecordController::class, 'edit'])->name('record.edit');
+    Route::post('/update-record/{id}', [JobRecordController::class, 'update'])->name('record.update');
+    Route::get('/delete-record/{id}', [JobRecordController::class, 'destroy'])->name('record.delete');
 });
 
 require __DIR__.'/auth.php';
