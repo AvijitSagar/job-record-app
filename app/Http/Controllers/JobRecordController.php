@@ -12,7 +12,9 @@ class JobRecordController extends Controller
      */
     public function index()
     {
-        //
+        return view('job-record.record.manage', [
+            'records' => JobRecord::all()
+        ]);
     }
 
     /**

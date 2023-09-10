@@ -11,12 +11,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::routeIs('') ? 'active' : '' }}" aria-current="page"
-                            href="">Home</a>
+                        <a class="nav-link {{ Request::routeIs('home') ? 'active' : '' }}" aria-current="page"
+                            href="{{route('home')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::routeIs('') ? 'active' : '' }}" aria-current="page"
-                            href="">Job Records</a>
+                        <a class="nav-link {{ Request::routeIs('list.record.job') ? 'active' : '' }}" aria-current="page"
+                            href="{{route('list.record.job')}}">Job Records</a>
                     </li>
                 </ul>
                 <form class="d-flex" action="{{ route('logout') }}" method="POST">

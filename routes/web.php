@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::post('/jobrecord', [JobRecordController::class, 'store'])->name('record.job');
+    Route::get('/record-list', [JobRecordController::class, 'index'])->name('list.record.job');
 });
 
 require __DIR__.'/auth.php';
