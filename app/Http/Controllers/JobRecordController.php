@@ -28,7 +28,8 @@ class JobRecordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        JobRecord::newJobRecord($request);
+        return back()->with('message', 'Information added successfully');
     }
 
     /**

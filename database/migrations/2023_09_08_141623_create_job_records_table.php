@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('job_records', function (Blueprint $table) {
             $table->id();
+            $table->string('company_name');
+            $table->string('company_address');
+            $table->integer('vacency')->nullable();
+            $table->string('position');
+            $table->date('applied_on');
+            $table->date('application_deadline')->nullable();
+            $table->string('application_process')->nullable();
+            $table->string('useful_links')->nullable();
+            $table->string('description')->nullable();
+            $table->tinyText('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }
