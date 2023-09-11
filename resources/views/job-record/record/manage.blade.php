@@ -38,6 +38,8 @@
                                                 <td>
                                                     <a href="{{route('record.edit', $record->id)}}"><button class="btn btn-sm btn-outline-warning"
                                                             type="submit">Edit</button></a>
+                                                    <a href=""><button class="btn btn-sm btn-outline-success"
+                                                            type="submit">Review</button></a>
                                                     <a href="{{route('record.delete', $record->id)}}"><button class="btn btn-sm btn-outline-danger"
                                                             type="submit"
                                                             onclick="return confirm('Delete the record?')">Delete</button></a>

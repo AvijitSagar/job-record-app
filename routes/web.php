@@ -1,9 +1,6 @@
 <?php
-
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobRecordController;
 use App\Http\Controllers\ProfileController;
-use App\Models\JobRecord;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit-record/{id}', [JobRecordController::class, 'edit'])->name('record.edit');
     Route::post('/update-record/{id}', [JobRecordController::class, 'update'])->name('record.update');
     Route::get('/delete-record/{id}', [JobRecordController::class, 'destroy'])->name('record.delete');
+
+    
 });
 
 require __DIR__.'/auth.php';
