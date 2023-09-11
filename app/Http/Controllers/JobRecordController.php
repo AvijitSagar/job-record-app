@@ -39,9 +39,11 @@ class JobRecordController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(JobRecord $jobRecord)
+    public function show(string $jobRecord)
     {
-        //
+        return view('job-record.record.show', [
+            'record' => JobRecord::find($jobRecord)
+        ]);
     }
 
     /**

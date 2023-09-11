@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit-record/{id}', [JobRecordController::class, 'edit'])->name('record.edit');
     Route::post('/update-record/{id}', [JobRecordController::class, 'update'])->name('record.update');
     Route::get('/delete-record/{id}', [JobRecordController::class, 'destroy'])->name('record.delete');
+    Route::get('/show-record/{id}', [JobRecordController::class, 'show'])->name('record.show');
 
     // Route::resource('feedback', FeedbackController::class);
     Route::get('/feedback/{id}', [FeedbackController::class, 'create'])->name('create.feedback');
