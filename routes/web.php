@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\JobRecordController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/update-record/{id}', [JobRecordController::class, 'update'])->name('record.update');
     Route::get('/delete-record/{id}', [JobRecordController::class, 'destroy'])->name('record.delete');
 
-    
+    // Route::resource('feedback', FeedbackController::class);
+    Route::get('/feedback/{id}', [FeedbackController::class, 'create'])->name('create.feedback');
+    Route::post('/feedback-add/{id}', [FeedbackController::class, 'store'])->name('store.feedback');
 });
 
 require __DIR__.'/auth.php';
