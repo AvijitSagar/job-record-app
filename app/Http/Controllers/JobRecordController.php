@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JobRecord;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JobRecordController extends Controller
 {
@@ -13,7 +14,8 @@ class JobRecordController extends Controller
     public function index()
     {
         return view('job-record.record.manage', [
-            'records' => JobRecord::all()
+            'records' => JobRecord::where('user_id', Auth::user()->id)->get()
+            // 'records' => JobRecord::all()
         ]);
     }
 

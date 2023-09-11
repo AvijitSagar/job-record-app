@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class JobRecord extends Model
 {
@@ -13,6 +14,7 @@ class JobRecord extends Model
 
     public static function newJobRecord($request){
         self::$jobRecord = new JobRecord();
+        self::$jobRecord->user_id = Auth::user()->id;
         self::$jobRecord->company_name = $request->company_name;
         self::$jobRecord->company_address = $request->company_address;
         self::$jobRecord->vacency = $request->vacency;
@@ -40,5 +42,9 @@ class JobRecord extends Model
     public static function deleteJobRecord($jobRecord){
         self::$jobRecord = JobRecord::find($jobRecord);
         self::$jobRecord->delete();
+    }
+
+    public function user(){
+        return $this->hasOne(User::class);
     }
 }
