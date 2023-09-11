@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feedback;
 use App\Models\JobRecord;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,7 +43,8 @@ class JobRecordController extends Controller
     public function show(string $jobRecord)
     {
         return view('job-record.record.show', [
-            'record' => JobRecord::find($jobRecord)
+            'record' => JobRecord::find($jobRecord),
+            'feedback' => Feedback::find($jobRecord)
         ]);
     }
 

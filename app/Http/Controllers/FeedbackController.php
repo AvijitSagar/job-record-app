@@ -46,17 +46,21 @@ class FeedbackController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Feedback $feedback)
+    public function edit(string $feedback)
     {
-        //
+        return view('job-record.feedback.edit', [
+            'feedback' => Feedback::find($feedback),
+            'jobRecord' => JobRecord::find($feedback)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Feedback $feedback)
+    public function update(Request $request, string $feedback_id)
     {
-        //
+        Feedback::updateFeedback($request, $feedback_id);
+        return back()->with('message', 'Feedback for the job has been updated');
     }
 
     /**
