@@ -15,6 +15,7 @@ class JobRecordController extends Controller
     public function index()
     {
         return view('job-record.record.manage', [
+            // user wise job record showing
             'records' => JobRecord::where('user_id', Auth::user()->id)->get()
             // 'records' => JobRecord::all()
         ]);
@@ -42,6 +43,7 @@ class JobRecordController extends Controller
      */
     public function show(string $jobRecord)
     {
+
         return view('job-record.record.show', [
             'record' => JobRecord::find($jobRecord),
             'feedback' => Feedback::find($jobRecord)

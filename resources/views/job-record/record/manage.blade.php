@@ -13,6 +13,7 @@
                         <div class="col-md-12 mx-auto">
                             <h3 class="text-center"><b>JOB RECORDS</b></h3>
                             <p class=" mt-3 text-center text-success">{{ Session::get('message') }}</p>
+                            <p class=" mt-3 text-center text-danger">{{ Session::get('message-danger') }}</p>
                             <div>
                                 <table id="example" class="table table-striped" style="width:100%">
                                     <thead>

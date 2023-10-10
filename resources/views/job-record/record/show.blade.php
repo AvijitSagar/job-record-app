@@ -68,25 +68,26 @@
                                     <tbody>
                                         <tr>
                                             <th>Contacted On</th>
-                                            <td>{{$feedback->contacted_on}}</td>
+                                            <td>{{$feedback->contacted_on ?? ''}}</td>
                                         </tr>
                                         <tr>
                                             <th>Contacted Via</th>
-                                            <td>{{$feedback->contacted_via}}</td>
+                                            <td>{{$feedback->contacted_via ?? ''}}</td>
                                         </tr>
                                         <tr>
                                             <th>Viva Date & Time</th>
-                                            <td>{{$feedback->viva_date . ' ' . $feedback->viva_time}}</td>
+                                            <td>{{$feedback->viva_date ?? ''}}</td>
                                         </tr>
                                         <tr>
                                             <th>Status</th>
-                                            <td>{{$feedback->status}}</td>
+                                            <td>{{$feedback->status ?? ''}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                                 <div class="text-center">
                                     <a href="{{route('list.record.job')}}"><button class="btn btn-sm btn-outline-danger" type="submit">Back to list</button></a>
-                                    <a href="{{route('edit.feedback', $feedback->id)}}"><button class="btn btn-sm btn-outline-primary" type="submit">Edit Feedback</button></a>
+                                    <a href="{{route('edit.feedback', $feedback->id ?? '')}}"><button class="btn btn-sm btn-outline-primary" type="submit">Edit Feedback</button></a>
+                                    <a href="{{route('create.feedback', $record->id)}}"><button class="btn btn-sm btn-outline-success" type="submit">Add Feedback</button></a>
                                 </div>
                             </div>
                         </div>

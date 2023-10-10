@@ -21,9 +21,15 @@ class FeedbackController extends Controller
      */
     public function create($id)
     {
-        return view('job-record.feedback.add', [
-            'jobRecord' => JobRecord::find($id)
-        ]);
+        $feedbackExists = Feedback::where('job_record_id', $id)->exists();
+
+        if ($feedbackExists == true) {
+            return redirect(route('list.record.job'))->with('message-danger', 'Feedback already added');
+        } else {
+            return view('job-record.feedback.add', [
+                'jobRecord' => JobRecord::find($id)
+            ]);
+        }
     }
 
     /**

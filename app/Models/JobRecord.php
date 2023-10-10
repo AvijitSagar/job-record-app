@@ -41,6 +41,7 @@ class JobRecord extends Model
     }
     public static function deleteJobRecord($jobRecord){
         self::$jobRecord = JobRecord::find($jobRecord);
+        // self::$jobRecord = Feedback::find($jobRecord);
         self::$jobRecord->delete();
     }
 
