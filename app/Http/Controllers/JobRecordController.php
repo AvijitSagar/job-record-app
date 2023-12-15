@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class JobRecordController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return view('job-record.record.manage', [
@@ -21,26 +18,17 @@ class JobRecordController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('job-record.record.add');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         JobRecord::newJobRecord($request);
         return back()->with('message', 'Information added successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $jobRecord)
     {
         return view('job-record.record.show', [
@@ -50,9 +38,6 @@ class JobRecordController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $jobRecord)
     {
         return view('job-record.record.edit', [
@@ -60,18 +45,12 @@ class JobRecordController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $jobRecord)
     {
         JobRecord::updateJobRecord($request, $jobRecord);
         return redirect(route('list.record.job'))->with('message', 'Record updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $jobRecord)
     {
         $feedbackExists = Feedback::where('job_record_id', $jobRecord)->exists();
