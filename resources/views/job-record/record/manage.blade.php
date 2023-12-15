@@ -23,7 +23,7 @@
                                             <th>Position</th>
                                             <th>Vacancy</th>
                                             <th>Applied date</th>
-                                            {{-- <th>Deadline</th> --}}
+                                            <th>Viva date & time</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -35,7 +35,8 @@
                                                 <td>{{ $record->position }}</td>
                                                 <td>{{ $record->vacency }}</td>
                                                 <td>{{ $record->applied_on }}</td>
-                                                {{-- <td>{{ $record->application_deadline }}</td> --}}
+                                                {{-- this dont return null exception if the viva_date or viva_time is null --}}
+                                                <td>{{ optional($record->feedback)->viva_date }} {{optional($record->feedback)->viva_time}}</td>
                                                 <td>
                                                     <a href="{{route('record.edit', $record->id)}}"><button class="btn btn-sm btn-outline-warning"
                                                             type="submit">Edit</button></a>

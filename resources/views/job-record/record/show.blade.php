@@ -52,10 +52,6 @@
                                             <th>Description</th>
                                             <td>{{$record->description}}</td>
                                         </tr>
-                                        <tr>
-                                            <th>Status</th>
-                                            <td>{{$record->status}}</td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -81,10 +77,6 @@
                                         <tr>
                                             <th>Company email or phone</th>
                                             <td>{{$feedback->email_or_phone ?? ''}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Company address</th>
-                                            <td>{{$record->company_address ?? ''}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
