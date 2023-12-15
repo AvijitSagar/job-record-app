@@ -31,23 +31,28 @@
                                         @foreach ($records as $record)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $record->company_name }}</td>
-                                                <td>{{ $record->position }}</td>
+                                                <td>{{ substr(($record->company_name), 0, 12) }}...</td>
+                                                <td>{{ substr(($record->position), 0, 12) }}...</td>
                                                 <td>{{ $record->vacency }}</td>
-                                                <td>{{ $record->applied_on }}</td>
-                                                {{-- this dont return null exception if the viva_date or viva_time is null --}}
-                                                <td>{{ optional($record->feedback)->viva_date }} {{optional($record->feedback)->viva_time}}</td>
+                                                {{-- <td>{{ $record->applied_on }}</td> --}}
+                                                <td>{{ \Carbon\Carbon::parse($record->applied_on)->format('j M y') }}</td>
+                                                {{-- <td>{{ optional($record->feedback)->viva_date }} {{optional($record->feedback)->viva_time}}</td> --}}
+                                                {{-- this is for date and time format and its color --}}
+                                                <td class="@if($record->feedback && $record->feedback->viva_date < now()) text-danger @elseif($record->feedback && $record->feedback->viva_date < now()->addDays(5)) text-success @endif">
+                                                    @if($record->feedback && $record->feedback->viva_date < now())
+                                                        Expired on {{ \Carbon\Carbon::parse(optional($record->feedback)->viva_date)->format('j M') }}
+                                                    @else
+                                                        {{ optional($record->feedback)->viva_date ? \Carbon\Carbon::parse(optional($record->feedback)->viva_date)->format('j M') : '' }}
+                                                        {{ optional($record->feedback)->viva_time ? \Carbon\Carbon::parse(optional($record->feedback)->viva_time)->format('h:i A') : '' }}
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <a href="{{route('record.edit', $record->id)}}"><button class="btn btn-sm btn-outline-warning"
                                                             type="submit">Edit</button></a>
                                                     <a href="{{route('record.show', $record->id)}}"><button class="btn btn-sm btn-outline-info"
                                                             type="submit">View</button></a>
-                                                    {{-- if feedback exists then show the edit feedback button if not then show add feedback button  --}}
-                                                    @if ($record->feedback)
-                                                        <a href="{{ route('edit.feedback', $record->feedback->id) }}"><button class="btn btn-sm btn-outline-primary" type="submit">Edit Feed</button></a>
-                                                    @else
-                                                        <a href="{{ route('create.feedback', $record->id) }}"><button class="btn btn-sm btn-outline-success" type="submit">Add Feed</button></a>
-                                                    @endif
+                                                    <a href="{{route('create.feedback', $record->id)}}"><button class="btn btn-sm btn-outline-success"
+                                                        type="submit">Feedback</button></a>
                                                     <a href="{{route('record.delete', $record->id)}}"><button class="btn btn-sm btn-outline-danger"
                                                             type="submit"
                                                             onclick="return confirm('Delete the record?')">Delete</button></a>
