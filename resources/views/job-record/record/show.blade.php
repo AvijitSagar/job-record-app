@@ -67,20 +67,24 @@
                                 <table id="" class="table table-bordered" style="width:100%">
                                     <tbody>
                                         <tr>
+                                            <th>Contacted via</th>
+                                            <td>{{$feedback->contacted_via ?? ''}}</td>
+                                        </tr>
+                                        <tr>
                                             <th>Contacted On</th>
                                             <td>{{$feedback->contacted_on ?? ''}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Contacted Via</th>
-                                            <td>{{$feedback->contacted_via ?? ''}}</td>
-                                        </tr>
-                                        <tr>
                                             <th>Viva Date & Time</th>
-                                            <td>{{$feedback->viva_date ?? ''}}</td>
+                                            <td>{{$feedback->viva_date ?? ''}} {{$feedback->viva_time ?? ''}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Status</th>
-                                            <td>{{$feedback->status ?? ''}}</td>
+                                            <th>Company email or phone</th>
+                                            <td>{{$feedback->email_or_phone ?? ''}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Company address</th>
+                                            <td>{{$record->company_address ?? ''}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
