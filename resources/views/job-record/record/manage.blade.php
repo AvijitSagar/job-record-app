@@ -40,10 +40,14 @@
                                                 <td>
                                                     <a href="{{route('record.edit', $record->id)}}"><button class="btn btn-sm btn-outline-warning"
                                                             type="submit">Edit</button></a>
-                                                    <a href="{{route('record.show', $record->id)}}"><button class="btn btn-sm btn-outline-primary"
+                                                    <a href="{{route('record.show', $record->id)}}"><button class="btn btn-sm btn-outline-info"
                                                             type="submit">View</button></a>
-                                                    <a href="{{route('create.feedback', $record->id)}}"><button class="btn btn-sm btn-outline-success"
-                                                            type="submit">Feedback</button></a>
+                                                    {{-- if feedback exists then show the edit feedback button if not then show add feedback button  --}}
+                                                    @if ($record->feedback)
+                                                        <a href="{{ route('edit.feedback', $record->feedback->id) }}"><button class="btn btn-sm btn-outline-primary" type="submit">Edit Feed</button></a>
+                                                    @else
+                                                        <a href="{{ route('create.feedback', $record->id) }}"><button class="btn btn-sm btn-outline-success" type="submit">Add Feed</button></a>
+                                                    @endif
                                                     <a href="{{route('record.delete', $record->id)}}"><button class="btn btn-sm btn-outline-danger"
                                                             type="submit"
                                                             onclick="return confirm('Delete the record?')">Delete</button></a>
