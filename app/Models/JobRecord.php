@@ -12,7 +12,8 @@ class JobRecord extends Model
 
     private static $jobRecord;
 
-    public static function newJobRecord($request){
+    public static function newJobRecord($request)
+    {
         self::$jobRecord = new JobRecord();
         self::$jobRecord->user_id = Auth::user()->id;
         self::$jobRecord->company_name = $request->company_name;
@@ -26,7 +27,8 @@ class JobRecord extends Model
         self::$jobRecord->description = $request->description;
         self::$jobRecord->save();
     }
-    public static function updateJobRecord($request, $jobRecord){
+    public static function updateJobRecord($request, $jobRecord)
+    {
         self::$jobRecord = JobRecord::find($jobRecord);
         self::$jobRecord->company_name = $request->company_name;
         self::$jobRecord->company_address = $request->company_address;
@@ -39,13 +41,21 @@ class JobRecord extends Model
         self::$jobRecord->description = $request->description;
         self::$jobRecord->save();
     }
-    public static function deleteJobRecord($jobRecord){
+
+    public static function deleteJobRecord($jobRecord)
+    {
         self::$jobRecord = JobRecord::find($jobRecord);
-        // self::$jobRecord = Feedback::find($jobRecord);
         self::$jobRecord->delete();
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->hasOne(User::class);
+    }
+
+    // one-to-one relation between jobrecord and feedback model 
+    public function feedback()
+    {
+        return $this->hasOne(Feedback::class, 'job_record_id');
     }
 }

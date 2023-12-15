@@ -86,7 +86,15 @@
                                 </table>
                                 <div class="text-center">
                                     <a href="{{route('list.record.job')}}"><button class="btn btn-sm btn-outline-danger" type="submit">Back to list</button></a>
-                                    <a href="{{route('edit.feedback', $feedback->id ?? '')}}"><button class="btn btn-sm btn-outline-primary" type="submit">Edit Feedback</button></a>
+                                    {{-- <a href="{{route('edit.feedback', $feedback->job_record_id ?? '')}}"><button class="btn btn-sm btn-outline-primary" type="submit">Edit Feedback</button></a> --}}
+
+                                    {{-- check if there is no feedback under the job record, then appears a disabled button otherwise show the edit feedback button  --}}
+                                    @if ($feedback)
+                                        <a href="{{ route('edit.feedback', $feedback->job_record_id) }}" class="btn btn-sm btn-outline-primary">Edit Feedback</a>
+                                    @else
+                                        <button class="btn btn-sm btn-outline-primary" type="button" disabled>Edit Feedback</button>
+                                    @endif
+
                                     <a href="{{route('create.feedback', $record->id)}}"><button class="btn btn-sm btn-outline-success" type="submit">Add Feedback</button></a>
                                 </div>
                             </div>
