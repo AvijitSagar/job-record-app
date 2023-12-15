@@ -25,6 +25,26 @@ class JobRecordController extends Controller
 
     public function store(Request $request)
     {
+        // validation 
+        $this->validate($request, [
+            'company_name' => 'required|max:255',
+            'company_address' => 'required',
+            'vacency' => 'nullable|regex:/(^[0-9]+$)/u',
+            'position' => 'required',
+            'applied_on' => 'required',
+            'application_deadline' => 'nullable',
+            'application_process' => 'nullable',
+            'useful_links' => 'nullable',
+            'description' => 'nullable'
+        ], [
+            'company_name.required' => 'company name is required',
+            'company_name.max' => 'this field can contail maximum 255 character',
+            'company_address.required' => 'company address is required',
+            'vacency' => 'this field only contains numbers',
+            'position.required' => 'position is required',
+            'applied_on.required' => 'appplied date is required'
+        ]);
+
         JobRecord::newJobRecord($request);
         return back()->with('message', 'Information added successfully');
     }
