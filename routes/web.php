@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.register');
 });
 
 Route::get('/home', [JobRecordController::class, 'create'])->middleware(['auth', 'verified'])->name('home');
